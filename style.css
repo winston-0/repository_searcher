@@ -1,0 +1,80 @@
+body {
+    background-color: #C4C4C4;
+}
+* {
+    box-sizing: border-box;
+}
+
+.search-container {
+    margin: 120px auto;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.search-container__bar {
+    width: 500px;
+    height: 61px;
+    border: none;
+    font-size: 48px;
+    padding-left: 13px;
+}
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.search-container__autocompete-list-item {
+    width: 500px;
+    height: 44px;
+    border: 2px black solid;
+    margin: 0;
+    background-color: #E3E3E3;
+    font-size: 30px;
+    padding-left: 13px;
+}
+.search-container__autocompete-list-item:hover {
+    background-color: #65CDF9;
+}
+.pinned-repos {
+    margin: 45px auto;
+    width: 503px;
+}
+.pinned-repos__list-item {
+    background-color: #E27BEB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    border: 1px black solid;
+}
+.pinned-repos__list-item-data {
+    font-size: 24px;
+}
+   
+.pinnned-repos__list-button {
+    width: 42px;
+    height: 38.5px;
+    position: relative;
+    background-color: transparent;
+    border: none;
+   
+}
+.pinnned-repos__list-button:before, .pinnned-repos__list-button:after {
+    position: absolute;
+    width: 42px;
+    content: ""; 
+    height: 4px;
+    background-color: red;
+}
+.pinnned-repos__list-button::after {
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%) rotate(45deg)
+}
+.pinnned-repos__list-button::before {
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%) rotate(-45deg)
+}
+ 
