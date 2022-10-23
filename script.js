@@ -9,8 +9,9 @@ searchBar.oninput = async () => {
   if(searchBar.value.trim() === "") {
     autoComplete.innerHTML = "";
   } else {
-  let repos = await getItems(searchBar.value);
+  let repos = await getRepos(searchBar.value);
   let items = repos.items;
+  autoComplete.innerHTML = "";
     items.forEach(i => {
       renderAutoComplete(i);
     })
@@ -39,7 +40,7 @@ function debounceRequest() {
 }
 }
 
-let getItems = debounceRequest();
+let getRepos = debounceRequest();
 
 autoComplete.onclick = (e) => {
   pinRepo(e.target);
