@@ -20,7 +20,7 @@ searchBar.oninput = async () => {
 async function sendRequest(value) {
   if(value.trim() === "") {
     autoComplete.innerHTML = "";
-    return
+    return null;
   }
     let response = await fetch(`https://api.github.com/search/repositories?q=${value}&per_page=5&page=1`);
     return await response.json();  
