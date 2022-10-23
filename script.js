@@ -5,11 +5,9 @@ const searchContainer = document.querySelector('.search-container')
 
 
 
-searchBar.oninput = async () => {
-  if(searchBar.value.trim() === "") {
-    autoComplete.innerHTML = "";
-  } else {
+searchBar.oninput = async () => { 
   let repos = await getRepos(searchBar.value);
+  if(repos) {
   let items = repos.items;
   autoComplete.innerHTML = "";
     items.forEach(i => {
@@ -20,16 +18,17 @@ searchBar.oninput = async () => {
 
 
 async function sendRequest(value) {
-  let response = await fetch(`https://api.github.com/search/repositories?q=${value}&per_page=5&page=1`);
-  return await response.json();
+  if(value.trim() === "") {
+    autoComplete.innerHTML = "";
+    return
+  }
+    let response = await fetch(`https://api.github.com/search/repositories?q=${value}&per_page=5&page=1`);
+    return await response.json();  
 }
 
 function debounceRequest() {
   let timerId = null;
   return function(searchValue) {
-    if(searchValue.trim() === "") {
-      clearTimeout(timerId);
-    } else {
       return new Promise((resolve) => {
          clearTimeout(timerId);
           timerId = setTimeout( () => {
@@ -37,7 +36,6 @@ function debounceRequest() {
           }, 1200);
       })
   }
-}
 }
 
 let getRepos = debounceRequest();
