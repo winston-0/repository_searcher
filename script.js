@@ -33,7 +33,7 @@ function debounceRequest() {
          clearTimeout(timerId);
           timerId = setTimeout( () => {
             resolve(sendRequest(searchValue));
-          }, 600);
+          }, 1500);
       })
   }
 }
